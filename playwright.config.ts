@@ -13,7 +13,19 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],['allure-playwright']
+    ['html'],['allure-playwright'],
+    ['playwright-html-reporter', { 
+      testFolder: 'tests',
+      title: 'Open Cart Application HTML Report',
+      project: 'Open Cart',
+      release: '1.0.0',
+      testEnvironment: 'QA',
+      embedAssets: true,
+      embedAttachments: true,
+      outputFolder: 'playwright-html-report',
+      minifyAssets: true,
+      startServer: true,
+    }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -23,7 +35,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot:'on',
-    headless:false,
+    headless:true,
     baseURL:'https://naveenautomationlabs.com/opencart/index.php',
   },
 
@@ -48,7 +60,7 @@ export default defineConfig({
     //   use: { ...devices['Desktop Safari'] },
     // },
 
-    /* Test against mobile viewports. */
+    // /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
@@ -59,13 +71,27 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
+    {
+      name: 'Microsoft Edge',
+      use: { //...devices['Desktop Edge'], 
+              channel: 'msedge',
+              viewport:null,
+              launchOptions:{
+                args:['--start-maximized'],
+                ignoreDefaultArgs:['--window-size=1280,720']
+              }
+            },
+    },
     {
       name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      use: { //...devices['Desktop Chrome'],
+             channel: 'chrome',
+             viewport:null,
+             launchOptions:{
+              args:['--start-maximized'],
+              ignoreDefaultArgs:['--window-size=1280,720']
+             }
+           },
     },
   ],
 
