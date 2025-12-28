@@ -24,7 +24,7 @@ export default defineConfig({
       embedAttachments: true,
       outputFolder: 'playwright-html-report',
       minifyAssets: true,
-      startServer: true,
+      startServer: false,
     }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -71,17 +71,17 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    {
-      name: 'Microsoft Edge',
-      use: { //...devices['Desktop Edge'], 
-              channel: 'msedge',
-              viewport:null,
-              launchOptions:{
-                args:['--start-maximized'],
-                ignoreDefaultArgs:['--window-size=1280,720']
-              }
-            },
-    },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { //...devices['Desktop Edge'], 
+    //           channel: 'msedge',
+    //           viewport:null,
+    //           launchOptions:{
+    //             args:['--start-maximized'],
+    //             ignoreDefaultArgs:['--window-size=1280,720']
+    //           }
+    //         },
+    // },
     {
       name: 'Google Chrome',
       use: { //...devices['Desktop Chrome'],
