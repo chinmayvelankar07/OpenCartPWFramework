@@ -433,7 +433,7 @@ jobs:
           rm -rf allure-results playwright-report playwright-html-report test-results
 
       - name: 🧪 Run PROD tests
-        run: npx playwright test --grep "@login" --config=playwright.config.prod.ts
+        run: npx playwright test --grep "@login" --config=playwright.config.ts
         env:
           CI: true
           ALLURE_ENVIRONMENT: PROD
