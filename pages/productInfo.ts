@@ -17,9 +17,9 @@ export class productInfo{
         this.page = page;
         this.util = new ElementUtil(page);
         this.header = page.locator('h1');
-        this.imageCount = page.locator(`div#content img`);
-        this.productMetaData = page.locator(`(//div[@id='content']//ul[@class='list-unstyled'])[position()=1]/li`);
-        this.productPriceData = page.locator(`(//div[@id='content']//ul[@class='list-unstyled'])[position()=2]/li`);
+        this.imageCount = page.locator('div#content img');
+        this.productMetaData = page.locator('(//div[@id=\'content\']//ul[@class=\'list-unstyled\'])[position()=1]/li');
+        this.productPriceData = page.locator('(//div[@id=\'content\']//ul[@class=\'list-unstyled\'])[position()=2]/li');
     }
 
     async verifyImageCount():Promise<number>{
@@ -34,22 +34,22 @@ export class productInfo{
     }
 
     private async getProductMetaData(){
-        let productMetaData:string[] = await this.productMetaData.allInnerTexts();
+        const productMetaData:string[] = await this.productMetaData.allInnerTexts();
 
-        for (let meta of productMetaData){
+        for (const meta of productMetaData){
 
-            let metaData:string[] = meta.split(':');
-            let metaKey = metaData[0].trim();
-            let metaValue = metaData[1].trim();
+            const metaData:string[] = meta.split(':');
+            const metaKey = metaData[0].trim();
+            const metaValue = metaData[1].trim();
             this.productMap.set(metaKey,metaValue);
         }
 
     }
 
     private async getProductPriceData(){
-        let productPriceData:string[] = await this.productPriceData.allInnerTexts();
-        let productPrice = productPriceData[0].trim();
-        let productExtPrice = productPriceData[1].split(':')[1].trim();
+        const productPriceData:string[] = await this.productPriceData.allInnerTexts();
+        const productPrice = productPriceData[0].trim();
+        const productExtPrice = productPriceData[1].split(':')[1].trim();
         
         this.productMap.set('ProductPrice',productPrice);
         this.productMap.set('ExTaxPrice',productExtPrice);

@@ -18,15 +18,15 @@ export class LoginPage{
         this.page = page;
         this.emailId = page.getByRole('textbox', { name: 'E-Mail Address' });
         this.password = page.getByRole('textbox', { name: 'Password' });
-        this.loginBtn = page.locator(`//input[@type='submit']`);
+        this.loginBtn = page.locator('//input[@type=\'submit\']');
         this.warningMsg = page.locator('.alert.alert-danger.alert-dismissible');
         this.util = new ElementUtil(page);
-        this.registerLink = page.locator(`//div[@class='list-group']/a[text()='Register']`);
+        this.registerLink = page.locator('//div[@class=\'list-group\']/a[text()=\'Register\']');
 
     }
     //Page methods/behavior
     async gotoLoginPage(baseURL: undefined|string):Promise<void>{
-        await this.page.goto(baseURL+`?route=account/login`);
+        await this.page.goto(baseURL+'?route=account/login');
     }
 
     async doLogin(emailID:string,password:string):Promise<HomePage>{

@@ -1,6 +1,4 @@
-import {test,expect,Page, Locator} from "@playwright/test";
-import { time } from "console";
-import { TIMEOUT } from "dns";
+import {Page, Locator} from '@playwright/test';
 
 type flexibleLocator = string | Locator;
 
@@ -79,7 +77,7 @@ export class ElementUtil{
      * @param text 
      */
     async fill(locator:flexibleLocator,text:string):Promise<void>{
-        await this.getLocator(locator).fill(text,{timeout:this.defaultTimeOut})
+        await this.getLocator(locator).fill(text,{timeout:this.defaultTimeOut});
         console.log(`Entered value ${text} in the element : ${locator}`);
         
     }
