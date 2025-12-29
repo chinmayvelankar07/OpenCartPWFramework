@@ -39,10 +39,10 @@ export default defineConfig({
     baseURL:'https://naveenautomationlabs.com/opencart/index.php',
   },
 
-  metadata:{
-    appUsername: 'dev@test.com',
-    password: 'dev@123',
-  },
+  // metadata:{
+  //   appUsername: process.env.APP_USERNAME,
+  //   password: process.env.APP_PASSWORD,
+  // },
   /* Configure projects for major browsers */
   projects: [
     // {
