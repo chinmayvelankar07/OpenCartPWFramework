@@ -104,6 +104,10 @@ pipeline {
         // ============================================
         stage('🔧 DEV Tests') {
             steps {
+                withCredentials([
+            string(credentialsId: 'DEV_APP_USERNAME', variable: 'APP_USERNAME'),
+            string(credentialsId: 'DEV_APP_PASSWORD', variable: 'APP_PASSWORD')
+        ])
                 echo '============================================'
                 echo '🎭 Installing Playwright browsers...'
                 echo '============================================'
