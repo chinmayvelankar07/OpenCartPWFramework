@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 
 export default defineConfig({
@@ -39,10 +41,10 @@ export default defineConfig({
     baseURL:'https://naveenautomationlabs.com/opencart/index.php',
   },
 
-  // metadata:{
-  //   appUsername: process.env.APP_USERNAME,
-  //   password: process.env.APP_PASSWORD,
-  // },
+  metadata:{
+    appUsername: process.env.DEV_APP_USERNAME,
+    password: process.env.DEV_APP_PASSWORD,
+  },
   /* Configure projects for major browsers */
   projects: [
     // {
