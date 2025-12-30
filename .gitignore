@@ -10,4 +10,5 @@ node_modules/
 /allure-results/
 /playwright-html-report/
 /.env
+/eslint-report/
 
