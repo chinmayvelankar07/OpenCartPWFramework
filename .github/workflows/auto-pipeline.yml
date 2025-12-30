@@ -144,8 +144,8 @@ jobs:
         env:
           CI: true
           ALLURE_ENVIRONMENT: DEV
-          APP_USERNAME: ${{ secrets.DEV_APP_USERNAME }}
-          APP_PASSWORD: ${{ secrets.DEV_APP_PASSWORD }}
+          DEV_APP_USERNAME: ${{ secrets.DEV_APP_USERNAME }}
+          DEV_APP_PASSWORD: ${{ secrets.DEV_APP_PASSWORD }}
 
       # ✅ Add environment label to Allure results
       - name: 🏷️ Add Allure environment info
@@ -241,8 +241,8 @@ jobs:
       - name: 🧪 Run QA tests
         run: npx playwright test --grep "@login" --config=playwright.config.qa.ts
         env:
-          APP_USERNAME: ${{ secrets.QA_APP_USERNAME }}
-          APP_PASSWORD: ${{ secrets.QA_APP_PASSWORD }}
+          QA_APP_USERNAME: ${{ secrets.QA_APP_USERNAME }}
+          QA_APP_PASSWORD: ${{ secrets.QA_APP_PASSWORD }}
           CI: true
           ALLURE_ENVIRONMENT: QA
 
@@ -341,8 +341,8 @@ jobs:
       - name: 🧪 Run STAGE tests
         run: npx playwright test --grep "@login" --config=playwright.config.stage.ts
         env:
-          APP_USERNAME: ${{ secrets.STAGE_APP_USERNAME }}
-          APP_PASSWORD: ${{ secrets.STAGE_APP_PASSWORD }}
+          STAGE_APP_USERNAME: ${{ secrets.STAGE_APP_USERNAME }}
+          STAGE_APP_PASSWORD: ${{ secrets.STAGE_APP_PASSWORD }}
           CI: true
           ALLURE_ENVIRONMENT: STAGE
 
@@ -441,8 +441,8 @@ jobs:
       - name: 🧪 Run PROD tests
         run: npx playwright test --grep "@login" --config=playwright.config.ts
         env:
-          APP_USERNAME: ${{ secrets.PROD_APP_USERNAME }}
-          APP_PASSWORD: ${{ secrets.PROD_APP_PASSWORD }}
+          PROD_APP_USERNAME: ${{ secrets.PROD_APP_USERNAME }}
+          PROD_APP_PASSWORD: ${{ secrets.PROD_APP_PASSWORD }}
           CI: true
           ALLURE_ENVIRONMENT: PROD
 
