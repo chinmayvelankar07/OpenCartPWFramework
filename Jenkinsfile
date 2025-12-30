@@ -107,7 +107,7 @@ pipeline {
                 withCredentials([
             string(credentialsId: 'DEV_APP_USERNAME', variable: 'APP_USERNAME'),
             string(credentialsId: 'DEV_APP_PASSWORD', variable: 'APP_PASSWORD')
-        ])
+        ]){
                 echo '============================================'
                 echo '🎭 Installing Playwright browsers...'
                 echo '============================================'
@@ -138,6 +138,7 @@ pipeline {
                     echo "Config=playwright.config.dev.ts" >> allure-results/environment.properties
                 '''
             }
+        }
             post {
                 always {
                     // Copy and generate DEV Allure Report
