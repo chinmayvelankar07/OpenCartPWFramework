@@ -105,8 +105,8 @@ pipeline {
         stage('🔧 DEV Tests') {
             steps {
                 withCredentials([
-            string(credentialsId: 'DEV_APP_USERNAME', variable: 'APP_USERNAME'),
-            string(credentialsId: 'DEV_APP_PASSWORD', variable: 'APP_PASSWORD')
+            string(credentialsId: 'DEV_APP_USERNAME', variable: 'DEV_APP_USERNAME'),
+            string(credentialsId: 'DEV_APP_PASSWORD', variable: 'DEV_APP_PASSWORD')
         ]){
                 echo '============================================'
                 echo '🎭 Installing Playwright browsers...'
@@ -190,6 +190,10 @@ pipeline {
         // ============================================
         stage('🔍 QA Tests') {
             steps {
+                withCredentials([
+            string(credentialsId: 'QA_APP_USERNAME', variable: 'QA_APP_USERNAME'),
+            string(credentialsId: 'QA_APP_PASSWORD', variable: 'QA_APP_PASSWORD')
+             ])  {
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
                 echo '============================================'
@@ -214,6 +218,7 @@ pipeline {
                     echo "Browser=Google Chrome" >> allure-results/environment.properties
                     echo "Config=playwright.config.qa.ts" >> allure-results/environment.properties
                 '''
+                }
             }
             post {
                 always {
@@ -266,6 +271,10 @@ pipeline {
         // ============================================
         stage('🎯 STAGE Tests') {
             steps {
+                withCredentials([
+            string(credentialsId: 'STAGE_APP_USERNAME', variable: 'STAGE_APP_USERNAME'),
+            string(credentialsId: 'STAGE_APP_PASSWORD', variable: 'STAGE_APP_PASSWORD')
+            ]){
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
                 echo '============================================'
@@ -290,6 +299,7 @@ pipeline {
                     echo "Browser=Google Chrome" >> allure-results/environment.properties
                     echo "Config=playwright.config.stage.ts" >> allure-results/environment.properties
                 '''
+                }
             }
             post {
                 always {
@@ -342,6 +352,10 @@ pipeline {
         // ============================================
         stage('🚀 PROD Tests') {
             steps {
+                withCredentials([
+            string(credentialsId: 'DEV_APP_USERNAME', variable: 'DEV_APP_USERNAME'),
+            string(credentialsId: 'DEV_APP_PASSWORD', variable: 'DEV_APP_PASSWORD')
+            ]){
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
                 echo '============================================'
@@ -366,6 +380,7 @@ pipeline {
                     echo "Browser=Google Chrome" >> allure-results/environment.properties
                     echo "Config=playwright.config.prod.ts" >> allure-results/environment.properties
                 '''
+                }
             }
             post {
                 always {
