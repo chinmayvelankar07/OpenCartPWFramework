@@ -353,8 +353,8 @@ pipeline {
         stage('🚀 PROD Tests') {
             steps {
                 withCredentials([
-            string(credentialsId: 'DEV_APP_USERNAME', variable: 'DEV_APP_USERNAME'),
-            string(credentialsId: 'DEV_APP_PASSWORD', variable: 'DEV_APP_PASSWORD')
+            string(credentialsId: 'PROD_APP_USERNAME', variable: 'PROD_APP_USERNAME'),
+            string(credentialsId: 'PROD_APP_PASSWORD', variable: 'PROD_APP_PASSWORD')
             ]){
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
